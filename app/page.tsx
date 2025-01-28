@@ -6,7 +6,7 @@ import { ChevronRight, BookOpen, GraduationCap, Globe, Users } from 'lucide-reac
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-purple-50/30">
-      <Navbar />
+
       
       {/* Hero Section */}
       <section className="relative h-[100svh] bg-gradient-to-br from-indigo-900/95 to-violet-800/95 overflow-hidden">
@@ -168,7 +168,6 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
     </div>
   )
 }
