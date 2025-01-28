@@ -1,7 +1,6 @@
-// app/page.tsx
 import { MotionDiv, MotionButton } from '@/components/motion/motion'
 import { Footer } from '@/components/navigation/Footer'
-import { Navbar } from '@/components/navigation//Navbar'
+import { Navbar } from '@/components/navigation/Navbar'
 import { ChevronRight, BookOpen, GraduationCap, Globe, Users } from 'lucide-react'
 
 export default function Home() {
@@ -25,6 +24,7 @@ export default function Home() {
               <MotionButton
                 whileHover={{ scale: 1.05 }}
                 className="bg-white text-school-purple px-8 py-4 rounded-full text-lg font-semibold"
+                aria-label="Explore Our Programs"
               >
                 Explore Our Programs
                 <ChevronRight className="ml-2 inline-block" />
@@ -48,6 +48,7 @@ export default function Home() {
               key={index}
               whileHover={{ y: -10 }}
               className="glass p-8 rounded-2xl text-center hover:shadow-xl"
+              aria-label={item.title}
             >
               <item.icon className={`w-12 h-12 mx-auto mb-4 ${item.color}`} />
               <h3 className="text-xl font-bold text-gray-800">{item.title}</h3>
@@ -67,6 +68,7 @@ export default function Home() {
           <MotionButton
             whileHover={{ scale: 1.05 }}
             className="bg-school-yellow text-school-purple px-8 py-3 rounded-full font-semibold"
+            aria-label="Apply Now"
           >
             Apply Now
           </MotionButton>
