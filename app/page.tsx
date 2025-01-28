@@ -12,7 +12,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[95vh] bg-gradient-to-br from-school-purple to-school-yellow">
         <div className="container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-4xl z-10">
+          <div className="max-w-3xl z-10">
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
