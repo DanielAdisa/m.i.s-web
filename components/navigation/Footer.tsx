@@ -1,6 +1,6 @@
 // components/navigation/Footer.tsx
 import { MotionDiv, MotionButton } from '@/components/motion/motion'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -37,17 +37,18 @@ export function Footer() {
             <h3 className="text-2xl font-bold text-amber-400 mb-6">Quick Access</h3>
             <ul className="grid grid-cols-2 gap-4">
               {['Admissions', 'Academics', 'Campus Life', 'Alumni', 'News', 'Careers'].map((link, i) => (
-                <MotionDiv
-                  key={link}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                >
-                  <a href="#" className="group flex items-center gap-2 text-white/80 hover:text-amber-300 transition-colors">
-                    <ChevronRight className="w-4 h-4 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {link}
-                  </a>
-                </MotionDiv>
+                <li key={link}>
+                  <MotionDiv
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <a href="#" className="group flex items-center gap-2 text-white/80 hover:text-amber-300 transition-colors">
+                      <ChevronRight className="w-4 h-4 text-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {link}
+                    </a>
+                  </MotionDiv>
+                </li>
               ))}
             </ul>
           </div>
