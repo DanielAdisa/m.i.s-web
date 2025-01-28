@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-purple-50/30">
 
-      
       {/* Hero Section */}
       <section className="relative h-[100svh] bg-gradient-to-br from-indigo-900/95 to-violet-800/95 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10 mix-blend-soft-light" />
@@ -36,7 +35,7 @@ export default function Home() {
               <MotionButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-8 py-5 rounded-[2rem] text-lg font-semibold shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-shadow"
+                className="group bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-8 py-5 rounded-[2rem] text-lg font-semibold shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30"
                 aria-label="Explore Our Programs"
               >
                 <span className="tracking-wide">Explore Programs</span>
@@ -45,7 +44,7 @@ export default function Home() {
             </MotionDiv>
           </div>
         </div>
-        
+
         {/* Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(6)].map((_, i) => (
@@ -137,7 +136,7 @@ export default function Home() {
               <div className="text-2xl font-bold">Sustainable Innovation Hub</div>
             </div>
           </div>
-          
+
           <div className="space-y-8">
             <h2 className="text-5xl font-bold text-slate-900 leading-tight">
               Designed for the <span className="bg-gradient-to-r from-amber-400 to-amber-500 text-transparent bg-clip-text">Next Generation</span> of Innovators
@@ -167,7 +166,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </div>
   )
 }
