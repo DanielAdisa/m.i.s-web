@@ -11,6 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'school-yellow': '#FFD700',
+        'school-purple': '#6A1B9A',
+      },
+      fontFamily: {
+        heading: 'var(--font-poppins)',
+        body: 'var(--font-open-sans)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },
