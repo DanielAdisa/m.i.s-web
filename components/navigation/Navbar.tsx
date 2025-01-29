@@ -4,10 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X, Search, Bell, User, BookOpen } from 'lucide-react'
+import { usePathname } from 'next/navigation'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false)
 
   const links = [
@@ -17,11 +19,25 @@ export function Navbar() {
     { name: 'Campus Life', href: '/campus', badge: 'Live' }
   ]
 
+  const pathname = usePathname() || ''; // For active state tracking
+  const [header, setHeader] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const scrollHeader = () => {
+    if (!isMobileMenuOpen) {
+      setHeader(window.scrollY >= window.innerHeight * 0.1);
+    }
+  };
+
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    window.addEventListener('scroll', scrollHeader);
+    return () => {
+      window.removeEventListener('scroll', scrollHeader);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <motion.nav
