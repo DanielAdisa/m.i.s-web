@@ -4,7 +4,9 @@ import { ChevronRight, BookOpen, GraduationCap, Globe, Users, Music, Trophy, Sta
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-purple-50 to-amber-50/30">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-50 to-purple-50/30">
+
+      
       {/* Hero Section */}
       <section className="relative h-[100svh] bg-gradient-to-br from-purple-900/95 to-amber-700/90 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-soft-light" />
@@ -37,9 +39,8 @@ export default function Home() {
               <MotionButton
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="group bg-gradient-to-r from-amber-400 to-amber-500 text-purple-900 
-                           px-8 py-5 rounded-[2rem] text-lg font-bold shadow-xl 
-                           shadow-amber-500/20 hover:shadow-amber-500/30 transition-all"
+                className="group bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-8 py-5 rounded-[2rem] text-lg font-semibold shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-shadow"
+                aria-label="Explore Our Programs"
               >
                 <span className="tracking-wide">Join Our Community</span>
                 <ChevronRight className="ml-3 inline-block transform group-hover:translate-x-1" />
@@ -47,8 +48,8 @@ export default function Home() {
             </MotionDiv>
           </div>
         </div>
-
-        {/* Dynamic Background Elements */}
+        
+        {/* Floating Elements */}
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(6)].map((_, i) => (
             <MotionDiv
@@ -345,6 +346,53 @@ export default function Home() {
           </MotionButton>
         </div>
       </MotionDiv>
+
+      {/* Immersive Campus Section */}
+      <section className="py-24 relative">
+        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center max-w-7xl">
+          <div className="relative aspect-[5/3] rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl hover:shadow-3xl transition-shadow">
+            <img
+              src="/campus.jpg"
+              alt="Future Campus"
+              className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/40 to-transparent" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <div className="text-sm font-mono opacity-80">Campus 2025</div>
+              <div className="text-2xl font-bold">Sustainable Innovation Hub</div>
+            </div>
+          </div>
+          
+          <div className="space-y-8">
+            <h2 className="text-5xl font-bold text-slate-900 leading-tight">
+              Designed for the <span className="bg-gradient-to-r from-amber-400 to-amber-500 text-transparent bg-clip-text">Next Generation</span> of Innovators
+            </h2>
+            <p className="text-xl text-slate-600 leading-relaxed">
+              Our campus integrates cutting-edge technology with sustainable design, creating collaborative spaces that foster creativity and real-world problem solving.
+            </p>
+            <div className="grid grid-cols-2 gap-6">
+              {[
+                { value: '15k+', label: 'Learning Zones', metric: 'sqm' },
+                { value: 'AI', label: 'Powered Infrastructure', icon: '🤖' },
+                { value: '100%', label: 'Renewable Energy', icon: '♻️' },
+                { value: '24/7', label: 'Innovation Labs', icon: '⚡' }
+              ].map((stat, index) => (
+                <div key={index} className="p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-white/20 hover:border-white/40 transition-all">
+                  <div className="flex items-center gap-3">
+                    {stat.icon && <span className="text-2xl">{stat.icon}</span>}
+                    <div>
+                      <div className="text-2xl font-bold text-slate-900 mb-1">{stat.value}</div>
+                      <div className="text-slate-600">{stat.label}</div>
+                      {stat.metric && <div className="text-sm text-slate-400">{stat.metric}</div>}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   )
 }
