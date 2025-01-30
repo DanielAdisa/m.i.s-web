@@ -7,8 +7,8 @@ export function Footer() {
     <footer className="relative bg-gradient-to-br from-indigo-900 to-violet-900 mt-auto border-t border-white/10">
       <div className="absolute inset-0 bg-[url('/noise.png')] opacity-20 mix-blend-soft-light" />
       
-      <div className="container mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-4 gap-12 pb-16 border-b border-white/10">
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid lg:grid-cols-4 gap-8 pb-8 border-b border-white/10">
           {/* Contact Info with Motion */}
           <MotionDiv whileHover={{ y: -5 }} className="space-y-6">
             <h3 className="text-2xl font-bold text-amber-400 mb-6">Reach Out</h3>
@@ -77,8 +77,8 @@ export function Footer() {
           </div>
 
           {/* Newsletter with Modern Input */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-amber-400 mb-6">Stay Updated</h3>
+          <div className="space-y-4">
+            <h3 className="text-2xl font-bold text-amber-400 mb-4">Stay Updated</h3>
             <form className="flex flex-col gap-4">
               <input
                 type="email"
@@ -96,7 +96,7 @@ export function Footer() {
         </div>
 
         {/* Copyright with Elegant Typography */}
-        <div className="pt-8 text-center">
+        <div className="pt-4 text-center">
           <p className="text-white/60 font-light tracking-wide">
             © 2025 Maranatha International Schools<br/>
             <span className="text-sm opacity-70">Empowering Tomorrow's Leaders Today</span>

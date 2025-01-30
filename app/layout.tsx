@@ -28,15 +28,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <Navbar /> */}
       <body className={`${poppins.variable} ${openSans.variable} bg-slate-50`}>
-        <main className="min-h-screen">
-        
+
           {children}
-        
-        </main>
+
       </body>
-      {/* <Footer /> */}
     </html>
   )
 }
