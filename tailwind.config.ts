@@ -21,6 +21,16 @@ export default {
       backdropBlur: {
         xs: '2px',
       },
+      spacing: {
+        '128': '32rem',
+      },
+      borderRadius: {
+        '4xl': '2.5rem',
+      },
+      boxShadow: {
+        'soft': '0 8px 32px rgba(0,0,0,0.05)',
+        'glow': '0 8px 24px rgba(245,158,11,0.3)'
+      }
     },
   },
   plugins: [],
