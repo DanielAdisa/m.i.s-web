@@ -39,10 +39,10 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900">
+    <div className="min-h-screen flex flex-col bg-slate-900 overflow-y-auto snap-y snap-mandatory">
 
       {/* Hero Section */}
-      <section className="relative h-[110svh] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      <section className="relative h-screen snap-start flex-shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         <div className="absolute inset-0 bg-[url('/cosmic-texture.png')] opacity-20 mix-blend-soft-light" />
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="max-w-6xl z-10 relative">
@@ -112,10 +112,11 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 md:py-24 bg-slate-800/30 backdrop-blur-lg relative overflow-hidden">
+      <section className="h-screen snap-start flex-shrink-0 bg-slate-800/30 backdrop-blur-lg relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-20">
+        <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="w-full">
+            <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
               {stats.title}
               <span className="ml-2 md:ml-4 text-2xl md:text-3xl bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
@@ -147,12 +148,14 @@ export default function Home() {
             ))}
           </div>
         </div>
+        </div>
       </section>
 
       {/* Programs Section */}
-      <section className="py-16 md:py-24 bg-slate-900 relative overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-20">
+      <section className="h-screen snap-start flex-shrink-0 bg-slate-900 relative overflow-hidden">
+        <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="w-full">
+            <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
               {programs.title}
               <span className="ml-2 md:ml-4 text-2xl md:text-3xl text-emerald-400">✦</span>
@@ -178,12 +181,14 @@ export default function Home() {
             ))}
           </div>
         </div>
+        </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 md:py-24 bg-slate-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-20">
+      <section className="h-screen snap-start flex-shrink-0 bg-slate-950">
+        <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="w-full">
+            <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
               {testimonials.title}
               <span className="ml-2 md:ml-4 text-2xl md:text-3xl text-cyan-400">❝</span>
@@ -216,13 +221,15 @@ export default function Home() {
               </MotionDiv>
             ))}
           </div>
+          </div>
         </div>
       </section>
 
       {/* Events Section */}
-      <section className="py-16 md:py-24 bg-slate-900/50 backdrop-blur-lg">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 md:mb-20">
+      <section className="h-screen snap-start flex-shrink-0 bg-slate-900/50 backdrop-blur-lg">
+        <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="w-full">
+            <div className="text-center mb-12 md:mb-20">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
               {events.title}
               <span className="ml-2 md:ml-4 text-2xl md:text-3xl text-cyan-400">🗓️</span>
@@ -272,12 +279,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
             {/* Image Carousel Section */}
-            <section className="py-16 md:py-24 bg-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="mb-8 md:mb-12 text-center">
+            <section className="h-screen snap-start flex-shrink-0 bg-slate-800">
+        <div className="container mx-auto px-4 h-full flex items-center">
+          <div className="w-full">
+            <div className="mb-8 md:mb-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Campus Moments
             </h2>
@@ -329,6 +338,7 @@ export default function Home() {
             <div className="carousel-next absolute top-1/2 -right-3 md:-right-4 z-10 -translate-y-1/2 transform cursor-pointer rounded-full bg-slate-800/50 p-1 md:p-2 hover:bg-slate-700/50 transition-colors">
               <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
+          </div>
           </div>
         </div>
       </section>
