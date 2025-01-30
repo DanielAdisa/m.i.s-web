@@ -1,0 +1,195 @@
+
+{
+    "heroSection": {
+      "title": "Where Nigerian Teens Become Global Leaders",
+      "subtitle": "Empowering future leaders through innovative education",
+      "buttons": [
+        {
+          "text": "Explore Programs",
+          "icon": "ChevronRight",
+          "variant": "primary"
+        },
+        {
+          "text": "Virtual Tour",
+          "icon": "ChevronRight",
+          "variant": "secondary"
+        }
+      ],
+      "students": [
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg"
+      ]
+    },
+  
+    "trendingSection": {
+      "title": "🔥 Trending at Maranatha",
+      "trends": [
+        {
+          "icon": "Trophy",
+          "title": "Math Olympiad Winners",
+          "description": "Our team just clinched 1st place in national competition!"
+        },
+        {
+          "icon": "Basketball",
+          "title": "Basketball Finals",
+          "description": "Support our team this Friday at the sports complex!"
+        },
+        {
+          "icon": "Palette",
+          "title": "Art Exhibition",
+          "description": "Student artworks on display in the main hall"
+        }
+      ]
+    },
+  
+    "techFeatures": {
+      "title": "Future-Ready Learning Experience",
+      "description": "AI-powered classrooms • VR labs • Coding dojo • Robotics club • Digital creativity hubs",
+      "features": [
+        {
+          "icon": "Microscope",
+          "title": "STEM Innovation",
+          "description": "State-of-the-art research facilities"
+        },
+        {
+          "icon": "TabletSmartphone",
+          "title": "Digital First",
+          "description": "1:1 iPad program & smart classrooms"
+        }
+      ]
+    },
+  
+    "testimonials": {
+      "title": "What Our Students Say",
+      "quotes": [
+        {
+          "image": "/student-1.jpg",
+          "name": "Adaobi Nwankwo",
+          "text": "Maranatha has provided me with opportunities I never thought possible. The teachers are amazing and the facilities are top-notch."
+        },
+        {
+          "image": "/student-2.jpg",
+          "name": "Chikezie Okoro",
+          "text": "The STEM programs here have completely changed my perspective on technology and innovation."
+        },
+        {
+          "image": "/student-3.jpg",
+          "name": "Zainab Adekunle",
+          "text": "I've found my passion through the amazing arts programs and supportive community."
+        }
+      ]
+    },
+  
+    "programs": {
+      "title": "Featured Programs",
+      "items": [
+        {
+          "emoji": "🎨",
+          "title": "Art & Design",
+          "description": "Explore your creativity with our comprehensive art and design program."
+        },
+        {
+          "emoji": "💻",
+          "title": "Computer Science",
+          "description": "Learn the latest in computer science and coding with our expert instructors."
+        },
+        {
+          "emoji": "⚽",
+          "title": "Sports & Athletics",
+          "description": "Join our sports teams and stay active with a variety of athletic programs."
+        }
+      ]
+    },
+  
+    "socialMediaWall": {
+      "title": "#MaranathaMoments",
+      "posts": [
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg",
+        "/student-1.jpg"
+      ]
+    },
+  
+    "stats": {
+      "title": "School Wide Progress",
+      "items": [
+        {
+          "emoji": "🎓",
+          "value": "98%",
+          "label": "University Acceptance"
+        },
+        {
+          "emoji": "🤹",
+          "value": "150+",
+          "label": "Student Clubs"
+        },
+        {
+          "emoji": "⭐",
+          "value": "4.8★",
+          "label": "Student Satisfaction"
+        },
+        {
+          "emoji": "❤️",
+          "value": "1M+",
+          "label": "Community Service Hours"
+        }
+      ]
+    },
+  
+    "events": {
+      "title": "📅 What's Happening",
+      "upcomingEvents": [
+        {
+          "title": "Science Fair 2024",
+          "date": "March 25",
+          "location": "Main Auditorium"
+        },
+        {
+          "title": "Cultural Day Celebration",
+          "date": "April 12",
+          "location": "School Grounds"
+        },
+        {
+          "title": "Career Guidance Workshop",
+          "date": "May 5",
+          "location": "ICT Center"
+        }
+      ],
+      "importantDates": [
+        {
+          "event": "Term Starts",
+          "date": "May 15"
+        },
+        {
+          "event": "Midterm Break",
+          "date": "May 16"
+        },
+        {
+          "event": "Cultural Day",
+          "date": "May 17"
+        }
+      ]
+    },
+  
+    "config": {
+      "contact": {
+        "address": "12 Leadership Road, Abuja, Nigeria",
+        "phone": "+234 800 123 4567",
+        "email": "info@maranatha.sch.ng"
+      },
+      "socialMedia": {
+        "facebook": "https://facebook.com/maranathainternational",
+        "instagram": "https://instagram.com/maranathainternational",
+        "twitter": "https://twitter.com/maranatha_intl",
+        "youtube": "https://youtube.com/maranathainternational"
+      }
+    }
+  }
