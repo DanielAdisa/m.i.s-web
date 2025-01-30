@@ -15,7 +15,7 @@ import ImageCarouselSection from '@/components/ImageCarouselSection';
 export default function Home() {
 
   return (
-    <div className="flex flex-col bg-gradient-to-tl from-violet-600 via-indigo-600 to-purple-600">
+    <div className="flex overflow-x-hidden flex-col bg-gradient-to-tl from-violet-600 via-indigo-600 to-purple-600">
 
       {/* Header */}
       <section id="NavBar" className="">
