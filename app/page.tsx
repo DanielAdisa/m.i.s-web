@@ -8,6 +8,8 @@ import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import { Footer } from '@/components/navigation/Footer';
+import { Navbar } from '@/components/navigation/Navbar';
 
 const iconComponents = {
   Trophy: Trophy,
@@ -39,17 +41,18 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-900 overflow-y-auto snap-y snap-mandatory">
+    <div className="snap-y snap-mandatory overflow-y-auto overflow-x-hidden flex flex-col bg-slate-900">
+      <Navbar/>
 
       {/* Hero Section */}
-      <section className="relative h-screen snap-start flex-shrink-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/cosmic-texture.png')] opacity-20 mix-blend-soft-light" />
+      <section className="relative h-screen snap-start bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 bg-[url('/student-1.jpg')] object-contain contain-content opacity-20 mix-blend-soft-light" />
         <div className="container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-6xl z-10 relative">
+          <div className="w-full z-10 relative">
             <MotionDiv
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-white space-y-8"
+              className="text-white space-y-8 flex flex-col w-full justify-center items-center"
             >
               <div className="mb-4 md:mb-8 flex items-center gap-4 bg-white/5 backdrop-blur-lg rounded-full px-6 py-3 w-fit border border-slate-700/50">
                 <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-cyan-400" />
@@ -60,16 +63,16 @@ export default function Home() {
                 <MotionDiv
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-cyan-400 text-center to-emerald-400 bg-clip-text text-transparent"
                 >
                   {heroSection.title.split(' ').slice(0,3).join(' ')}
                 </MotionDiv>
-                <span className="text-slate-100 block mt-4 md:mt-6 text-2xl md:text-4xl lg:text-5xl">
+                <span className="text-slate-100 block text-center mt-4 md:mt-6 text-2xl md:text-4xl lg:text-5xl">
                   {heroSection.title.split(' ').slice(3).join(' ')}
                 </span>
               </h1>
 
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 md:mt-12">
+              <div className="flex flex-col justify-center items-center sm:flex-row gap-3 md:gap-4 mt-8 md:mt-12">
                 {heroSection.buttons.map((button, index) => (
                   <MotionButton
                     key={index}
@@ -112,7 +115,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="h-screen snap-start flex-shrink-0 bg-slate-800/30 backdrop-blur-lg relative overflow-hidden">
+      <section className="h-screen snap-start bg-slate-800/30 backdrop-blur-lg relative">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full">
@@ -152,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* Programs Section */}
-      <section className="h-screen snap-start flex-shrink-0 bg-slate-900 relative overflow-hidden">
+      <section className="h-screen snap-start bg-slate-900 relative">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full">
             <div className="text-center mb-12 md:mb-20">
@@ -185,7 +188,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="h-screen snap-start flex-shrink-0 bg-slate-950">
+      <section className="h-screen snap-start bg-slate-950">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full">
             <div className="text-center mb-12 md:mb-20">
@@ -226,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* Events Section */}
-      <section className="h-screen snap-start flex-shrink-0 bg-slate-900/50 backdrop-blur-lg">
+      <section className="h-screen snap-start bg-slate-900/50 backdrop-blur-lg">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full">
             <div className="text-center mb-12 md:mb-20">
@@ -283,7 +286,7 @@ export default function Home() {
       </section>
 
             {/* Image Carousel Section */}
-            <section className="h-screen snap-start flex-shrink-0 bg-slate-800">
+            <section className="h-screen snap-start bg-slate-800">
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full">
             <div className="mb-8 md:mb-12 text-center">
@@ -342,6 +345,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Footer/>
     </div>
   )
 }
