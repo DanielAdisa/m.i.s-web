@@ -10,7 +10,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-[url('/student-1.jpg')] object-contain contain-content opacity-20 mix-blend-soft-light" />
+        <div className="absolute inset-0 bg-[url('/student-1.jpg')] bg-cover bg-top bg-no-repeat opacity-20 mix-blend-soft-light" />
         <div className="container mx-auto px-4 h-full flex items-center">
           <div className="w-full z-10 relative">
             <MotionDiv
