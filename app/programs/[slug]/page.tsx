@@ -13,17 +13,15 @@ export async function generateStaticParams() {
 }
 
 interface ProgramPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function ProgramPage({ params }: ProgramPageProps) {
-  const program = featuredPrograms.find((p) => p.slug === params.slug);
-
-  if (!program) {
-    notFound();
+    params: Record<string, string>; // Instead of { slug: string }
   }
+
+export default function ProgramPage({ params }: { params: { slug: string } }) {
+    const program = featuredPrograms.find((p) => p.slug === params.slug);
+  
+    if (!program) {
+      notFound();
+    }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
