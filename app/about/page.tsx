@@ -20,7 +20,7 @@ const AboutPage = () => {
   } = aboutData.aboutData;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50 overflow-hidden">
       <Navbar />
 
       {/* Hero Section */}
