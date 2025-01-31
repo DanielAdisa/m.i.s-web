@@ -14,7 +14,7 @@ const HeroSection = () => {
     ]
 
     return (
-        <section className="relative h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        <section className="relative h-screen  overflow-hidden">
             {/* Enhanced Background */}
             <div className="absolute inset-0 bg-[url('/student-1.jpg')] bg-cover bg-center bg-no-repeat opacity-20 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-900/90 via-slate-800/60 to-slate-900/90" />

@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import featuredPrograms from "@/data/programs.json";
 import { MotionDiv } from "./motion/motion";
 import { ChevronRight } from "lucide-react";
+import programsData from "@/data/programs.json";
+
+const { featuredPrograms } = programsData;
 
 export default function FeaturedPrograms() {
   return (
     <section className="py-24 bg-gradient-to-b from-purple-950 via-slate-900 to-purple-900 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -40,7 +42,7 @@ export default function FeaturedPrograms() {
                   <div className="text-5xl mb-6 bg-gradient-to-br from-gold-400/20 to-purple-400/20 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     {program.icon}
                   </div>
-                  
+
                   {/* Content */}
                   <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-gold-400 transition-colors">
                     {program.title}
@@ -48,7 +50,7 @@ export default function FeaturedPrograms() {
                   <p className="text-purple-200 mb-6 line-clamp-3">
                     {program.description}
                   </p>
-                  
+
                   {/* CTA */}
                   <div className="flex items-center gap-2 text-gold-400 font-medium">
                     <span>Learn More</span>

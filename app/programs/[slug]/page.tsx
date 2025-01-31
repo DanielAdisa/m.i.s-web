@@ -1,25 +1,20 @@
 import { notFound } from "next/navigation";
-import featuredPrograms from "@/data/programs.json";
+import programsData from "@/data/programs.json";
 import Image from "next/image";
+import { use } from 'react';
 import { MotionDiv } from "@/components/motion/motion";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
 import { ArrowBigRightIcon } from "lucide-react";
 
-export async function generateStaticParams() {
-  return featuredPrograms.map((program) => ({
-    slug: program.slug,
-  }));
-}
 
-interface ProgramPageProps {
-  params: {
-    slug: string;
-  };
-}
+const ProgramPage = ({ params }: { params: Promise<{ slug: string }> }) => {
 
-export default function ProgramPage({ params }: ProgramPageProps) {
-  const program = featuredPrograms.find((p) => p.slug === params.slug);
+const { featuredPrograms } = programsData;
+
+const unwrappedParams = use(params);
+
+const program = featuredPrograms.find((p) => p.slug === unwrappedParams.slug);
 
   if (!program) {
     notFound();
@@ -37,12 +32,12 @@ export default function ProgramPage({ params }: ProgramPageProps) {
           fill
           className="object-cover"
           priority
-          style={{ transform: 'scale(1.01)' }} // Fix image bleed
+          style={{ transform: "scale(1.01)" }} // Fix image bleed
         />
-        
+
         {/* Animated gradient overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-purple-900/20 to-purple-950/90" />
-        
+
         <div className="relative z-10 h-full flex items-center justify-center px-4">
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
@@ -191,3 +186,5 @@ export default function ProgramPage({ params }: ProgramPageProps) {
     </div>
   );
 }
+
+export default ProgramPage;
