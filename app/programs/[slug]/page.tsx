@@ -7,21 +7,22 @@ import { Footer } from "@/components/navigation/Footer";
 import { ArrowBigRightIcon } from "lucide-react";
 
 export async function generateStaticParams() {
-  return featuredPrograms.map((program) => ({
-    slug: program.slug,
-  }));
-}
-
-interface ProgramPageProps {
-    params: Record<string, string>; // Instead of { slug: string }
+    return featuredPrograms.map((program) => ({
+      slug: program.slug,
+    }));
   }
-
-export default function ProgramPage({ params }: { params: { slug: string } }) {
+  
+  export default function ProgramPage({
+    params,
+  }: {
+    params: { slug: string };
+  }) {
     const program = featuredPrograms.find((p) => p.slug === params.slug);
   
     if (!program) {
       notFound();
     }
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
