@@ -5,8 +5,17 @@
       "slug": "art-design",
       "title": "Art & Design",
       "description": "Explore your creativity with our comprehensive art and design program.",
+      "category": "Design",
+      "tags": ["Creative Arts", "Digital Design", "Fine Arts"],
       "icon": "🎨",
       "image": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5",
+      "price": 150000,
+      "rating": 4.8,
+      "studentsEnrolled": 1250,
+      "startDate": "2024-09-01",
+      "level": "Beginner",
+      "language": "English",
+      "certification": "Professional Art & Design Certificate",
       "courses": [
         "Foundations of Drawing",
         "Digital Illustration",
@@ -15,31 +24,51 @@
         "Portfolio Development"
       ],
       "duration": "3 Years",
+      "skillsLearned": [
+        "Color Theory",
+        "Digital Design Tools",
+        "Creative Thinking",
+        "Visual Communication",
+        "Project Management"
+      ],
       "instructors": [
         {
           "name": "Glory Emmanuel",
           "bio": "MFA in Fine Arts with 10+ years teaching experience",
-          "image": "/student-1.jpg"
+          "image": "/student-1.jpg",
+          "expertise": ["Fine Arts", "Digital Design"]
         },
         {
           "name": "Aunty Elizabeth",
           "bio": "Digital artist specializing in multimedia installations",
-          "image": "/student-1.jpg"
+          "image": "/student-1.jpg",
+          "expertise": ["Digital Art", "Multimedia"]
         }
       ],
       "admissionRequirements": [
         "Portfolio submission",
         "Basic drawing skills",
         "Letter of intent"
-      ]
+      ],
+      "prerequisites": ["Basic computer skills", "Creative mindset"],
+      "featured": true
     },
     {
       "id": "2",
       "slug": "computer-science",
       "title": "Computer Science",
       "description": "Learn the latest in computer science and coding with our expert instructors.",
+      "category": "Technology",
+      "tags": ["Programming", "Software Development", "Computer Science"],
       "icon": "💻",
       "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
+      "price": 300000,
+      "rating": 4.9,
+      "studentsEnrolled": 2500,
+      "startDate": "2024-09-01",
+      "level": "Intermediate",
+      "language": "English",
+      "certification": "BSc in Computer Science",
       "courses": [
         "Python Programming",
         "Web Development",
@@ -47,27 +76,46 @@
         "Machine Learning",
         "Cybersecurity Fundamentals"
       ],
-      "duration": "4 Years",
+      "duration": "2 Years",
+      "skillsLearned": [
+        "Programming",
+        "Problem Solving",
+        "Algorithm Design",
+        "Software Development",
+        "Data Analysis"
+      ],
       "instructors": [
         {
           "name": "Daniel Adisa",
           "bio": "PhD in Computer Science with focus on AI",
-          "image": "/student-1.jpg"
+          "image": "/student-1.jpg",
+          "expertise": ["AI", "Machine Learning", "Programming"]
         }
       ],
       "admissionRequirements": [
         "Math proficiency test",
         "Basic programming knowledge",
         "Personal project submission"
-      ]
+      ],
+      "prerequisites": ["Mathematics", "Basic Programming"],
+      "featured": true
     },
     {
       "id": "3",
       "slug": "sports-athletics",
       "title": "Sports & Athletics",
       "description": "Join our sports teams and stay active with a variety of athletic programs.",
+      "category": "Sports",
+      "tags": ["Athletics", "Physical Education", "Sports Science"],
       "icon": "⚽",
       "image": "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5",
+      "price": 50000,
+      "rating": 4.7,
+      "studentsEnrolled": 800,
+      "startDate": "2024-09-01",
+      "level": "All Levels",
+      "language": "English",
+      "certification": "Sports Science Diploma",
       "courses": [
         "Football Fundamentals",
         "Sports Nutrition",
@@ -76,23 +124,34 @@
         "Physical Conditioning"
       ],
       "duration": "2 Years",
+      "skillsLearned": [
+        "Athletic Performance",
+        "Team Leadership",
+        "Physical Fitness",
+        "Sports Strategy",
+        "Injury Prevention"
+      ],
       "instructors": [
         {
           "name": "Segun Adeyemi",
           "bio": "Former national team coach with 15 years experience",
-          "image": "/student-1.jpg"
+          "image": "/student-1.jpg",
+          "expertise": ["Football", "Sports Training"]
         },
         {
           "name": "Ngozi Chukwu",
           "bio": "Sports physiotherapist and fitness expert",
-          "image": "/student-1.jpg"
+          "image": "/student-1.jpg",
+          "expertise": ["Physiotherapy", "Fitness Training"]
         }
       ],
       "admissionRequirements": [
         "Physical fitness test",
         "Sports medical clearance",
         "Team tryouts"
-      ]
+      ],
+      "prerequisites": ["Basic Fitness Level", "Sports Interest"],
+      "featured": true
     }
   ]
 }

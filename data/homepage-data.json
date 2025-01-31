@@ -7,12 +7,14 @@
         {
           "text": "Explore Programs",
           "icon": "ChevronRight",
-          "variant": "primary"
+          "variant": "primary",
+          "push": "/programs"
         },
         {
           "text": "Virtual Tour",
           "icon": "ChevronRight",
           "variant": "secondary"
+
         }
       ],
       "students": [

@@ -70,6 +70,7 @@ const HeroSection = () => {
                                     key={index}
                                     whileHover={{ y: -3 }}
                                     whileTap={{ scale: 0.98 }}
+                                    onClick={() => window.location.href = button.push || ''}
                                     className={`${
                                         button.variant === 'primary' 
                                             ? 'bg-gradient-to-r from-cyan-500 to-emerald-500 shadow-lg hover:shadow-cyan-500/30'
