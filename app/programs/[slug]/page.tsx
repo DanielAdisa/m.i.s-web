@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import { featuredPrograms } from "@/data/programs";
 import Image from "next/image";
 import { MotionDiv } from "@/components/motion/motion";
-import { FiArrowUpRight } from "react-icons/fi";
 import { Navbar } from "@/components/navigation/Navbar";
 import { Footer } from "@/components/navigation/Footer";
 import { ArrowBigRightIcon } from "lucide-react";
@@ -13,7 +12,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProgramPage({ params }: { params: { slug: string } }) {
+interface ProgramPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function ProgramPage({ params }: ProgramPageProps) {
   const program = featuredPrograms.find((p) => p.slug === params.slug);
 
   if (!program) {
@@ -22,7 +27,7 @@ export default function ProgramPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
-        <Navbar />
+      <Navbar />
       {/* Hero Section */}
       <div className="relative h-[60vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-purple-950/90 via-slate-900/70 to-cyan-900/30" />
@@ -126,28 +131,20 @@ export default function ProgramPage({ params }: { params: { slug: string } }) {
               viewport={{ once: true }}
             >
               <div className="glass-panel p-8 rounded-3xl border border-purple-700/30 bg-gradient-to-br from-purple-900/30 to-slate-900/20 backdrop-blur-xl">
-                <h2 className="text-3xl font-bold text-gold-300 mb-8">Expert Faculty</h2>
-                <div className="grid gap-6">
+                <h2 className="text-3xl font-bold text-gold-300 mb-6">Meet Our Instructors</h2>
+                <div className="space-y-6">
                   {program.instructors.map((instructor) => (
-                    <div
-                      key={instructor.name}
-                      className="group relative overflow-hidden rounded-xl bg-purple-800/10 hover:bg-purple-800/20 transition-all"
-                    >
-                      <div className="flex items-center gap-6 p-6">
-                        <div className="relative">
-                          <Image
-                            src={instructor.image}
-                            alt={instructor.name}
-                            width={80}
-                            height={80}
-                            className="rounded-full border-2 border-gold-400/50 group-hover:border-gold-400 transition-all"
-                          />
-                          <div className="absolute inset-0 rounded-full border-2 border-transparent group-hover:border-gold-400/30 transition-all" />
-                        </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-gold-300">{instructor.name}</h3>
-                          <p className="text-sm text-purple-200/80 mt-1">{instructor.bio}</p>
-                        </div>
+                    <div key={instructor.name} className="flex items-center gap-4 p-4 rounded-xl bg-purple-800/20 border border-purple-700/30 hover:border-gold-500/30 transition-all">
+                      <Image
+                        src={instructor.image}
+                        alt={instructor.name}
+                        width={80}
+                        height={80}
+                        className="rounded-full border-2 border-gold-400"
+                      />
+                      <div>
+                        <h3 className="font-semibold text-gold-400">{instructor.name}</h3>
+                        <p className="text-purple-200 text-sm">{instructor.bio}</p>
                       </div>
                     </div>
                   ))}
@@ -155,37 +152,34 @@ export default function ProgramPage({ params }: { params: { slug: string } }) {
               </div>
             </MotionDiv>
 
-            {/* Contact Form */}
+            {/* Registration Form */}
             <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
               <div className="glass-panel p-8 rounded-3xl border border-purple-700/30 bg-gradient-to-br from-purple-900/30 to-slate-900/20 backdrop-blur-xl">
-                <h2 className="text-3xl font-bold text-gold-300 mb-8">Start Your Journey</h2>
-                <form className="space-y-6">
-                  <div className="space-y-4">
-                    <input
-                      type="text"
-                      placeholder="Full Name"
-                      className="form-input w-full px-4 py-3 rounded-xl bg-purple-800/20 border border-purple-700/50 placeholder:text-purple-400/60 text-purple-100 focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all"
-                    />
-                    <input
-                      type="email"
-                      placeholder="Email Address"
-                      className="form-input w-full px-4 py-3 rounded-xl bg-purple-800/20 border border-purple-700/50 placeholder:text-purple-400/60 text-purple-100 focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all"
-                    />
-                    <textarea
-                      placeholder="Your Message"
-                      className="form-input w-full px-4 py-3 rounded-xl bg-purple-800/20 border border-purple-700/50 placeholder:text-purple-400/60 text-purple-100 focus:ring-2 focus:ring-gold-400 focus:border-transparent transition-all h-32"
-                    />
-                  </div>
+                <h3 className="text-2xl font-bold text-white mb-6">Request Information</h3>
+                <form className="space-y-4">
+                  <input
+                    type="text"
+                    placeholder="Full Name"
+                    className="w-full p-3 rounded-xl bg-purple-800/30 border border-purple-700/50 text-white placeholder:text-purple-300 focus:border-gold-500/50 focus:outline-none transition-all"
+                  />
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    className="w-full p-3 rounded-xl bg-purple-800/30 border border-purple-700/50 text-white placeholder:text-purple-300 focus:border-gold-500/50 focus:outline-none transition-all"
+                  />
+                  <textarea
+                    placeholder="Message"
+                    className="w-full p-3 rounded-xl bg-purple-800/30 border border-purple-700/50 text-white placeholder:text-purple-300 focus:border-gold-500/50 focus:outline-none transition-all h-32"
+                  ></textarea>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-purple-950 font-semibold hover:from-gold-600 hover:to-amber-700 transition-all transform hover:scale-[1.02] shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30"
+                    className="w-full bg-gradient-to-r from-gold-500 to-gold-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-gold-600 hover:to-gold-700 transition-all shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30"
                   >
-                    <span>Submit Application</span>
-                    <span className="text-[10px]"><ArrowBigRightIcon className="text-sm" /></span>
+                    Submit Request
                   </button>
                 </form>
               </div>
