@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { featuredPrograms } from "@/data/programs";
+import featuredPrograms from "@/data/programs.json";
 import Image from "next/image";
 import { MotionDiv } from "@/components/motion/motion";
 import { Navbar } from "@/components/navigation/Navbar";
@@ -7,22 +7,23 @@ import { Footer } from "@/components/navigation/Footer";
 import { ArrowBigRightIcon } from "lucide-react";
 
 export async function generateStaticParams() {
-    return featuredPrograms.map((program) => ({
-      slug: program.slug,
-    }));
+  return featuredPrograms.map((program) => ({
+    slug: program.slug,
+  }));
+}
+
+interface ProgramPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default function ProgramPage({ params }: ProgramPageProps) {
+  const program = featuredPrograms.find((p) => p.slug === params.slug);
+
+  if (!program) {
+    notFound();
   }
-  
-  export default function ProgramPage({
-    params,
-  }: {
-    params: { slug: string };
-  }) {
-    const program = featuredPrograms.find((p) => p.slug === params.slug);
-  
-    if (!program) {
-      notFound();
-    }
-  
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">

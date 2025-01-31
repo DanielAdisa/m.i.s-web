@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import { featuredPrograms } from "@/data/programs";
+import featuredPrograms from "@/data/programs.json";
 import { MotionDiv } from "./motion/motion";
 import { ChevronRight } from "lucide-react";
 
