@@ -1,0 +1,228 @@
+{
+    "aboutData": {
+      "hero": {
+        "title": "Shaping Global Leaders",
+        "subtitle": "Pioneering Excellence in Education Since 1995",
+        "image": "https://images.unsplash.com/photo-1588072432836-e10032774350",
+        "stats": [
+          {
+            "icon": "🏫",
+            "value": "1 Campus",
+            "label": "@ Aba Okpu-Umuobo"
+          },
+          {
+            "icon": "🎓",
+            "value": "98%",
+            "label": "University Acceptance"
+          },
+          {
+            "icon": "🌍",
+            "value": "All",
+            "label": "Religions Welcomed"
+          },
+          {
+            "icon": "🏆",
+            "value": "20+",
+            "label": "Competitions Won"
+          }
+        ]
+      },
+  
+      "coreValues": [
+        {
+          "id": "cv1",
+          "icon": "📚",
+          "title": "Academic Rigor",
+          "description": "IB and British curriculum integration with innovative teaching methods",
+          "tags": ["education", "curriculum"]
+        },
+        {
+          "id": "cv2",
+          "icon": "❤️",
+          "title": "Character First",
+          "description": "Weekly leadership programs and community service initiatives",
+          "tags": ["ethics", "community"]
+        },
+        {
+          "id": "cv3",
+          "icon": "🌐",
+          "title": "Global Perspective",
+          "description": "Exchange programs with 15+ international partner schools",
+          "tags": ["culture", "exchange"]
+        },
+        {
+          "id": "cv4",
+          "icon": "💡",
+          "title": "Innovation Hub",
+          "description": "State-of-the-art STEM labs and maker spaces",
+          "tags": ["technology", "STEM"]
+        }
+      ],
+  
+      "mission": {
+        "statement": "To nurture ethical leaders through holistic, future-ready education",
+        "vision": "Creating a global community of empowered changemakers",
+        "philosophy": "Maranatha 5C Framework: Critical Thinking, Creativity, Collaboration, Character, Cultural Competence"
+      },
+  
+      "milestones": [
+        {
+          "id": "ms1",
+          "year": 1995,
+          "title": "Foundation Established",
+          "description": "Opened first campus in Lagos with 50 students",
+          "image": "/history-1995.jpg"
+        },
+        {
+          "id": "ms2",
+          "year": 2008,
+          "title": "IB Authorization",
+          "description": "Became first West African school offering PYP and DP programs",
+          "image": "/history-2008.jpg"
+        },
+        {
+          "id": "ms3",
+          "year": 2016,
+          "title": "Global Recognition",
+          "description": "Awarded Best International School by Education Worldwide",
+          "image": "/history-2016.jpg"
+        },
+        {
+          "id": "ms4",
+          "year": 2023,
+          "title": "Sustainability Campus",
+          "description": "Launched net-zero carbon emission campus design",
+          "image": "/history-2023.jpg"
+        }
+      ],
+  
+      "leadership": [
+        {
+          "id": "lt1",
+          "name": "Mrs. Ifeoma Adisa",
+          "role": "Propritress",
+          "bio": "25+ years experience in international education leadership",
+          "image": "/leadership-dg.jpg",
+          "credentials": ["PhD Education Management", "MSc Curriculum Design"],
+          "social": {
+            "linkedin": "https://linkedin.com/in/adebisi-okafor",
+            "twitter": "@maranatha_dg"
+          }
+        },
+        {
+          "id": "lt2",
+          "name": "Prof. Daniel Adisa",
+          "role": "Principal Secondary",
+          "bio": "Pioneer of STEM education integration in Africa",
+          "image": "/leadership-dean.jpg",
+          "credentials": ["Fellow Royal Society", "MIT Visiting Scholar"],
+          "awards": ["2022 Global Educator Prize"]
+        },
+        {
+            "id": "lt2",
+            "name": "Pastor Glory Umana",
+            "role": "Adminstrative Head",
+            "bio": "Community Leader",
+            "image": "/leadership-dean.jpg",
+            "credentials": ["Fellow Royal Society", "MIT Visiting Scholar"],
+            "awards": ["2022 Global Educator Prize"]
+          }
+      ],
+  
+      "academicOverview": {
+        "programs": [
+          {
+            "level": "Primary",
+            "curriculum": "IB PYP with Nigerian National Standards",
+            "features": ["Bilingual Program", "Robotics Foundation"]
+          },
+          {
+            "level": "Secondary",
+            "curriculum": "IGCSE & WAEC Combined Program",
+            "features": ["University Prep Track", "Entrepreneurship Lab"]
+          },
+          {
+            "level": "Advanced",
+            "curriculum": "International Baccalaureate DP",
+            "features": ["Extended Essay Mentor Program", "CAS Global Projects"]
+          }
+        ],
+        "stats": {
+          "studentTeacherRatio": "8:1",
+          "averageClassSize": 18,
+          "graduationRate": "100%",
+          "universityAcceptance": {
+            "globalTop100": "82%",
+            "scholarships": "₦2.3B+ awarded"
+          }
+        }
+      },
+  
+      "globalPartners": [
+        {
+          "name": "University of Cambridge",
+          "type": "Curriculum Partner",
+          "logo": "/cambridge-logo.png",
+          "since": 2005
+        },
+        {
+          "name": "MIT Launch Program",
+          "type": "STEM Innovation",
+          "logo": "/mit-launch-logo.png",
+          "since": 2018
+        }
+      ],
+  
+      "testimonials": [
+        {
+          "author": "Zainab Bello",
+          "role": "Alumna '22",
+          "text": "Maranatha's IB program prepared me perfectly for Stanford's rigorous academics",
+          "image": "/alumna-zainab.jpg"
+        },
+        {
+          "author": "Mr. & Mrs. Adekunle",
+          "role": "Parents",
+          "text": "The cultural exposure our children received is beyond anything we imagined",
+          "image": "/parents-adekunle.jpg"
+        }
+      ],
+  
+      "accreditations": [
+        {
+          "body": "Council of International Schools",
+          "logo": "/cis-accreditation.png",
+          "since": 2010
+        },
+        {
+          "body": "West African Examinations Council",
+          "logo": "/waec-accreditation.png",
+          "since": 1997
+        }
+      ],
+  
+      "ctaSection": {
+        "title": "Experience Maranatha Difference",
+        "actions": [
+          {
+            "title": "Schedule Tour",
+            "icon": "📅",
+            "link": "/visit"
+          },
+          {
+            "title": "Meet Our Team",
+            "icon": "👥",
+            "link": "/leadership"
+          }
+        ],
+        "contact": {
+          "admissionsEmail": "admissions@maranatha.edu.ng",
+          "emergencyPhone": "+234-800-EDU-NOW",
+          "socialMedia": {
+            "facebook": "@MaranathaIntl",
+            "instagram": "@MaranathaSchools"
+          }
+        }
+      }
+    }
+  }

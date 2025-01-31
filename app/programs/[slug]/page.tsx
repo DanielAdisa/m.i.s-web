@@ -23,7 +23,7 @@ const ProgramPage = ({ params }: { params: Promise<{ slug: string }> }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-slate-900 to-cyan-900/50">
       <Navbar />
 
       {/* Hero Section */}
@@ -87,8 +87,8 @@ const ProgramPage = ({ params }: { params: Promise<{ slug: string }> }) => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="glass-panel p-8 rounded-3xl border border-purple-700/30 bg-gradient-to-br from-purple-900/30 to-slate-900/20 backdrop-blur-xl">
-                <div className="grid grid-cols-2 gap-6">
+              <div className="glass-panel md:p-6 p-3 rounded-3xl border border-purple-700/30 bg-gradient-to-br from-purple-900/30 to-slate-900/20 backdrop-blur-xl">
+                <div className="grid md:grid-cols-2 gap-3 md:gap-6">
                   <div className="flex items-center gap-3 p-4 bg-purple-800/20 rounded-xl">
                     <Award className="w-6 h-6 text-gold-400" />
                     <div>
