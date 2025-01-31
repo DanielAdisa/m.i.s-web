@@ -10,6 +10,7 @@ import TestimonialSection from '@/components/TestimonialSection';
 import ProgramSection from '@/components/ProgramSection';
 import EventsSection from '@/components/EventsSection';
 import ImageCarouselSection from '@/components/ImageCarouselSection';
+import FeaturedPrograms from '@/components/FeaturedPrograms';
 
 
 export default function Home() {
@@ -39,7 +40,7 @@ export default function Home() {
 
       {/* Programs Section */}
       <section id="Programs" className="">
-          <ProgramSection />
+          <FeaturedPrograms />
       </section>
 
       {/* Events Section */}
