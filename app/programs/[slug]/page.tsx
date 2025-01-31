@@ -135,7 +135,7 @@ const program = featuredPrograms.find((p) => p.slug === unwrappedParams.slug);
                         alt={instructor.name}
                         width={80}
                         height={80}
-                        className="rounded-full border-2 border-gold-400"
+                        className="rounded-full w-16 border-2 border-gold-400"
                       />
                       <div>
                         <h3 className="font-semibold text-gold-400">{instructor.name}</h3>
