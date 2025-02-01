@@ -4,6 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronDown, AlertCircle } from 'lucide-react';
 import admissionsData from '@/data/admissions.json';
+import { Navbar } from "@/components/navigation/Navbar";
+import { Footer } from "@/components/navigation/Footer";
+import Image from "next/image";
+import { GraduationCap, Book, Users, Clock } from "lucide-react";
 
 const AdmissionsPage = () => {
   const { admissionRequirements, admissionForm } = admissionsData.admissions;
@@ -148,11 +152,90 @@ const AdmissionsPage = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const admissionSteps = [
+    {
+      icon: Book,
+      title: "Submit Application",
+      description: "Complete online application form with required documents"
+    },
+    {
+      icon: Users,
+      title: "Assessment",
+      description: "Academic evaluation and student interview"
+    },
+    {
+      icon: Clock,
+      title: "Decision",
+      description: "Admission decision within 2 weeks"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-950 via-slate-900 to-cyan-900/50">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative h-[70vh] overflow-hidden group">
+        <div className="absolute inset-0 bg-gradient-to-t from-purple-950/90 via-slate-900/70 to-cyan-900/30" />
+        <Image
+          src="/admissions-hero.jpg"
+          alt="Admissions"
+          fill
+          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          priority
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-purple-900/20 to-purple-950/90" />
+
+        <div className="relative z-10 h-full flex items-center justify-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-gold-400 via-amber-200 to-gold-400 bg-clip-text text-transparent drop-shadow-lg">
+              Join Our Community
+            </h1>
+            <p className="text-xl text-purple-100/90 max-w-2xl mx-auto font-light leading-relaxed">
+              Begin your journey towards academic excellence
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Admission Process */}
+      <section className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="glass-panel p-8 rounded-3xl border border-purple-700/30 bg-gradient-to-br from-purple-900/30 to-slate-900/20 backdrop-blur-xl"
+        >
+          <h2 className="text-3xl font-bold text-gold-300 mb-12 text-center">
+            Admission Process
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {admissionSteps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-xl bg-purple-800/20 border border-purple-700/30"
+              >
+                <step.icon className="w-8 h-8 text-gold-400 mb-4" />
+                <h3 className="text-xl font-semibold text-gold-300 mb-2">{step.title}</h3>
+                <p className="text-purple-200/90">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Requirements Section */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-stone-900 mb-8 text-center">
+        <h2 className="text-3xl font-bold text-gold-400 mb-8 text-center">
           Admission Requirements
         </h2>
 
@@ -335,6 +418,8 @@ const AdmissionsPage = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Footer />
     </div>
   );
 };
