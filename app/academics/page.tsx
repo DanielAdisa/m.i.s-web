@@ -20,7 +20,7 @@ const AccPage = () => {
   } = aboutData.about;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-stone-100">
+    <div className="min-h-screen bg-gradient-to-br from-stone-50 to-stone-100 overflow-hidden">
       <Navbar />
 
       {/* Hero Section */}

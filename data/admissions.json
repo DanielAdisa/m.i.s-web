@@ -1,0 +1,177 @@
+{
+    "admissions": {
+      "admissionRequirements": [
+        {
+          "level": "Nursery",
+          "ageRange": "2-4 years",
+          "requirements": [
+            "Completed application form",
+            "Birth certificate (original + copy)",
+            "Immunization records",
+            "2 recent passport photographs",
+            "Parent/Guardian ID copy",
+            "Health assessment form"
+          ],
+          "documents": [
+            "Medical report from licensed physician",
+            "Emergency contact information",
+            "Previous school records (if applicable)"
+          ],
+          "notice": "Assessment interview may be required for placement"
+        },
+        {
+          "level": "Primary",
+          "ageRange": "5-11 years",
+          "requirements": [
+            "Completed application form",
+            "Birth certificate (original + copy)",
+            "Previous school academic records",
+            "Transfer certificate/promotion report",
+            "4 recent passport photographs",
+            "Parent/Guardian ID copy"
+          ],
+          "documents": [
+            "Character reference from previous school",
+            "Extracurricular achievement records",
+            "Special needs assessment (if applicable)"
+          ],
+          "notice": "Entrance assessment in English and Mathematics required"
+        },
+        {
+          "level": "Secondary",
+          "ageRange": "12-18 years",
+          "requirements": [
+            "Completed application form",
+            "Birth certificate (original + copy)",
+            "Previous 2 years academic transcripts",
+            "Secondary school transfer certificate",
+            "6 recent passport photographs",
+            "National ID/Passport copy"
+          ],
+          "documents": [
+            "Recommendation letters (2 required)",
+            "Standardized test scores (if available)",
+            "Personal essay (500 words)"
+          ],
+          "notice": "Entrance exams in core subjects + student/parent interview"
+        }
+      ],
+      "admissionForm": {
+        "modalTitle": "Admissions Application",
+        "submitText": "Submit Application",
+        "formSections": [
+          {
+            "sectionTitle": "Student Information",
+            "fields": [
+              {
+                "label": "First Name",
+                "type": "text",
+                "name": "firstName",
+                "placeholder": "Student's first name",
+                "required": true,
+                "validation": "^[A-Za-z ]+$",
+                "errorMessage": "Please enter a valid name"
+              },
+              {
+                "label": "Last Name",
+                "type": "text",
+                "name": "lastName",
+                "placeholder": "Student's last name",
+                "required": true,
+                "validation": "^[A-Za-z ]+$",
+                "errorMessage": "Please enter a valid name"
+              },
+              {
+                "label": "Date of Birth",
+                "type": "date",
+                "name": "dob",
+                "required": true,
+                "errorMessage": "Date of birth is required"
+              }
+            ]
+          },
+          {
+            "sectionTitle": "Parent/Guardian Information",
+            "fields": [
+              {
+                "label": "Parent Name",
+                "type": "text",
+                "name": "parentName",
+                "placeholder": "Full name of parent/guardian",
+                "required": true
+              },
+              {
+                "label": "Email Address",
+                "type": "email",
+                "name": "parentEmail",
+                "placeholder": "primary@email.com",
+                "required": true,
+                "validation": "^\\S+@\\S+\\.\\S+$",
+                "errorMessage": "Invalid email address"
+              },
+              {
+                "label": "Phone Number",
+                "type": "tel",
+                "name": "parentPhone",
+                "placeholder": "+234 800 000 0000",
+                "required": true,
+                "validation": "^\\+?[0-9\\s-]{7,}$",
+                "errorMessage": "Invalid phone number"
+              }
+            ]
+          },
+          {
+            "sectionTitle": "Academic History",
+            "fields": [
+              {
+                "label": "Previous School Name",
+                "type": "text",
+                "name": "previousSchool",
+                "placeholder": "Name of last attended school",
+                "required": true
+              },
+              {
+                "label": "Upload Academic Records",
+                "type": "file",
+                "name": "academicRecords",
+                "accept": ".pdf,.doc,.docx",
+                "required": true
+              },
+              {
+                "label": "Reason for Transfer",
+                "type": "textarea",
+                "name": "transferReason",
+                "placeholder": "Explain reason for school change...",
+                "rows": 3
+              }
+            ]
+          },
+          {
+            "sectionTitle": "Medical Information",
+            "fields": [
+              {
+                "label": "Known Allergies",
+                "type": "text",
+                "name": "allergies",
+                "placeholder": "List any medical allergies"
+              },
+              {
+                "label": "Special Needs",
+                "type": "textarea",
+                "name": "specialNeeds",
+                "placeholder": "Describe any special requirements",
+                "rows": 2
+              },
+              {
+                "label": "Immunization Record",
+                "type": "file",
+                "name": "immunization",
+                "accept": ".pdf,.jpg,.png",
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
