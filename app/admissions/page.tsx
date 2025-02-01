@@ -1,58 +1,51 @@
 "use client";
 
-import { useState } from "react";
-import { MotionDiv } from "@/components/motion/motion";
-import { Navbar } from "@/components/navigation/Navbar";
-import { Footer } from "@/components/navigation/Footer";
-import Image from "next/image";
-import { Globe, GraduationCap, Users, BookOpen, Trophy, Star, ChevronRight } from "lucide-react";
-import admissionsData from "@/data/admissions.json";
+import { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronDown, AlertCircle } from 'lucide-react';
+import admissionsData from '@/data/admissions.json';
 
 const AdmissionsPage = () => {
   const { admissionRequirements, admissionForm } = admissionsData.admissions;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({});
-  const [errors, setErrors] = useState<Errors>({});
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [activeSection, setActiveSection] = useState<number | null>(null);
+  const [files, setFiles] = useState<Files>({});
+  const modalRef = useRef<HTMLDivElement>(null);
 
+  // Handle section toggle for requirements
   interface FormData {
-    [key: string]: any;
-  }
-
-  interface Errors {
     [key: string]: string;
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData: FormData) => ({ ...prevFormData, [name]: value }));
-  };
+  interface FormErrors {
+    [key: string]: string | null;
+  }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, files } = e.target;
-    setFormData((prevFormData: FormData) => ({ ...prevFormData, [name]: files ? files[0] : null }));
-  };
+  interface Files {
+    [key: string]: File;
+  }
+
+  interface AdmissionRequirement {
+    level: string;
+    ageRange: string;
+    requirements: string[];
+    documents?: string[];
+    notice?: string;
+  }
 
   interface Field {
     name: string;
     label: string;
     type: string;
     placeholder?: string;
-    rows?: number;
-    accept?: string;
     required?: boolean;
     validation?: string;
     errorMessage?: string;
+    rows?: number | undefined;
+    accept?: string;
   }
-
-  const validateField = (field: Field, value: any): string | null => {
-    if (field.required && !value) {
-      return field.errorMessage || "This field is required";
-    }
-    if (field.validation && !new RegExp(field.validation).test(value)) {
-      return field.errorMessage || "Invalid value";
-    }
-    return null;
-  };
 
   interface FormSection {
     sectionTitle: string;
@@ -67,194 +60,281 @@ const AdmissionsPage = () => {
 
   interface AdmissionsData {
     admissions: {
-      admissionRequirements: any[];
+      admissionRequirements: AdmissionRequirement[];
       admissionForm: AdmissionForm;
     };
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const newErrors: Errors = {};
-    admissionForm.formSections.forEach((section: FormSection) => {
-      section.fields.forEach((field: Field) => {
-        const error = validateField(field, formData[field.name]);
-        if (error) {
-          newErrors[field.name] = error;
-        }
-      });
-    });
-    if (Object.keys(newErrors).length === 0) {
-      // Handle form submission
-      console.log("Form submitted", formData);
-    } else {
-      setErrors(newErrors);
+  const toggleSection = (index: number) => {
+    setActiveSection(activeSection === index ? null : index);
+  };
+
+  // Handle input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    validateField(name, value);
+  };
+
+  // Handle file uploads
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFiles(prev => ({ ...prev, [fieldName]: file }));
     }
   };
 
+  // Field validation
+  const validateField = (name: string, value: string) => {
+    const fieldConfig: Field | undefined = admissionForm.formSections
+      .flatMap((section: FormSection) => section.fields)
+      .find((field: Field) => field.name === name);
+
+    if (fieldConfig?.validation) {
+      const regex = new RegExp(fieldConfig.validation);
+      const isValid = regex.test(value);
+      
+      setFormErrors((prev: FormErrors) => ({
+        ...prev,
+        [name]: isValid ? null : fieldConfig.errorMessage || null
+      }));
+    }
+  };
+
+  // Form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formPayload = new FormData();
+    
+    // Append form data
+    Object.entries(formData).forEach(([key, value]: [string, unknown]) => {
+      formPayload.append(key, value as string);
+    });
+
+    // Append files
+    Object.entries(files).forEach(([key, file]: [string, unknown]) => {
+      formPayload.append(key, file as File);
+    });
+
+    try {
+      // Replace with actual API endpoint
+      const response: Response = await fetch('/api/admissions', {
+        method: 'POST',
+        body: formPayload,
+      });
+
+      if (response.ok) {
+        alert('Application submitted successfully!');
+        setIsModalOpen(false);
+        // Reset form
+        setFormData({});
+        setFiles({});
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Error submitting application. Please try again.');
+    }
+  };
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div className="min-h-screen bg-stone-50">
-      <Navbar />
+      {/* Requirements Section */}
+      <section className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl font-bold text-stone-900 mb-8 text-center">
+          Admission Requirements
+        </h2>
 
-      {/* Hero Section */}
-      <section className="relative h-[80vh] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-stone-900/30 to-transparent" />
-        <Image
-          src="/campus-hero.jpg"
-          alt="Maranatha Campus"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="(max-width: 768px) 100vw, 80vw"
-        />
-        
-        <div className="relative z-10 h-full flex items-center justify-center px-4">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-center max-w-4xl space-y-6"
-          >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-100 font-serif leading-tight">
-              Educating Tomorrow's<br className="hidden md:block" /> Global Leaders
-            </h1>
-            <p className="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto font-light">
-              Where Tradition Meets Innovation in Global Education
-            </p>
-          </MotionDiv>
-        </div>
-      </section>
+        <div className="max-w-4xl mx-auto space-y-6">
+          {admissionRequirements.map((level, index) => (
+            <div key={index} className="bg-white rounded-lg shadow-sm border border-stone-200">
+              <button
+                onClick={() => toggleSection(index)}
+                className="w-full p-6 text-left flex justify-between items-center hover:bg-stone-50 transition-colors"
+              >
+                <div>
+                  <h3 className="text-xl font-semibold text-stone-900">{level.level}</h3>
+                  <p className="text-stone-600 mt-1">Age Range: {level.ageRange}</p>
+                </div>
+                <ChevronDown className={`w-6 h-6 transform transition-transform ${
+                  activeSection === index ? 'rotate-180' : ''
+                }`} />
+              </button>
 
-      {/* Admission Requirements */}
-      <section className="container mx-auto px-4 py-16 md:py-24">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 font-serif">
-            Admission Requirements
-          </h2>
-          <p className="text-lg text-stone-600 max-w-2xl mx-auto">
-            Detailed requirements for each level of entry
-          </p>
-        </div>
-        
-        <div className="space-y-8">
-          {admissionRequirements.map((requirement, index) => (
-            <MotionDiv
-              key={index}
-              className="bg-white p-6 rounded-xl shadow-md border border-stone-200"
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-2xl font-bold text-stone-900 mb-4">{requirement.level}</h3>
-              <p className="text-stone-600 mb-4">Age Range: {requirement.ageRange}</p>
-              <div className="space-y-2">
-                <h4 className="text-lg font-semibold text-stone-900">Requirements:</h4>
-                <ul className="list-disc list-inside text-stone-600">
-                  {requirement.requirements.map((req, i) => (
-                    <li key={i}>{req}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="space-y-2 mt-4">
-                <h4 className="text-lg font-semibold text-stone-900">Documents:</h4>
-                <ul className="list-disc list-inside text-stone-600">
-                  {requirement.documents.map((doc, i) => (
-                    <li key={i}>{doc}</li>
-                  ))}
-                </ul>
-              </div>
-              <p className="text-stone-600 mt-4"><strong>Note:</strong> {requirement.notice}</p>
-            </MotionDiv>
+              <AnimatePresence>
+                {activeSection === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="px-6 pb-6 pt-2 border-t border-stone-200"
+                  >
+                    <div className="space-y-4">
+                      <div>
+                        <h4 className="font-semibold text-stone-900 mb-2">Requirements:</h4>
+                        <ul className="list-disc pl-6 space-y-2">
+                          {level.requirements.map((req, i) => (
+                            <li key={i} className="text-stone-600">{req}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {level.documents?.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-stone-900 mb-2">Documents:</h4>
+                          <ul className="list-disc pl-6 space-y-2">
+                            {level.documents.map((doc, i) => (
+                              <li key={i} className="text-stone-600">{doc}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {level.notice && (
+                        <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
+                          <p className="text-sm text-amber-800">{level.notice}</p>
+                        </div>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-amber-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-amber-600 transition-colors"
+          >
+            Start Application
+          </button>
         </div>
       </section>
 
       {/* Admission Form Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl">
-            <h2 className="text-2xl font-bold mb-4">{admissionForm.modalTitle}</h2>
-            <form onSubmit={handleSubmit}>
-              {admissionForm.formSections.map((section, index) => (
-                <div key={index} className="mb-6">
-                  <h3 className="text-xl font-semibold mb-4">{section.sectionTitle}</h3>
-                  <div className="space-y-4">
-                    {section.fields.map((field, i) => (
-                      <div key={i} className="flex flex-col">
-                        <label className="mb-2 font-medium">{field.label}</label>
-                        {field.type === "textarea" ? (
-                          <textarea
-                            name={field.name}
-                            placeholder={field.placeholder}
-                            rows={4}
-                            className="p-2 border rounded"
-                            onChange={handleInputChange}
-                          />
-                        ) : (
-                          <input
-                            type={field.type}
-                            name={field.name}
-                            placeholder={field.placeholder}
-                            className="p-2 border rounded"
-                            onChange={field.type === "file" ? handleFileChange : handleInputChange}
-                          />
-                        )}
-                        {errors[field.name] && (
-                          <span className="text-red-500 text-sm">{errors[field.name]}</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-              <div className="flex justify-end space-x-4">
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-stone-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              ref={modalRef}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-6 border-b border-stone-200 flex justify-between items-center">
+                <h3 className="text-xl font-bold text-stone-900">
+                  {admissionForm.modalTitle}
+                </h3>
                 <button
-                  type="button"
-                  className="px-4 py-2 bg-gray-300 rounded"
                   onClick={() => setIsModalOpen(false)}
+                  className="text-stone-500 hover:text-stone-700"
+                  title="Close"
                 >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-500 text-white rounded"
-                >
-                  {admissionForm.submitText}
+                  <X className="w-6 h-6" />
                 </button>
               </div>
-            </form>
-          </div>
-        </div>
-      )}
 
-      {/* Final CTA */}
-      <section className="bg-stone-900 text-stone-100 py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <MotionDiv
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
-              Ready to Join Our Global Community?
-            </h2>
-            <p className="text-lg text-stone-300 mb-8 max-w-2xl mx-auto">
-              Discover how Maranatha International Schools can unlock your child's potential
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center">
-              <button
-                className="px-8 py-4 bg-amber-500 text-white rounded-lg font-semibold hover:bg-amber-600 transition-colors flex items-center gap-2"
-                onClick={() => setIsModalOpen(true)}
-              >
-                <BookOpen className="w-5 h-5" />
-                Apply Now
-              </button>
-              <button className="px-8 py-4 border-2 border-stone-300 text-stone-100 rounded-lg font-semibold hover:border-amber-500 hover:text-amber-500 transition-colors">
-                Schedule Campus Tour
-              </button>
-            </div>
-          </MotionDiv>
-        </div>
-      </section>
+              <form onSubmit={handleSubmit} className="p-6 space-y-8">
+                {admissionForm.formSections.map((section, sectionIndex) => (
+                  <div key={sectionIndex} className="space-y-4">
+                    <h4 className="font-semibold text-stone-900 text-lg">
+                      {section.sectionTitle}
+                    </h4>
+                    
+                    <div className="space-y-5">
+                      {section.fields.map((field, fieldIndex) => (
+                        <div key={fieldIndex}>
+                          <label className="block text-sm font-medium text-stone-700 mb-2">
+                            {field.label}
+                            {field.required && (
+                              <span className="text-rose-500 ml-1">*</span>
+                            )}
+                          </label>
 
-      <Footer />
+                          {field.type === 'textarea' ? (
+                            <textarea
+                              name={field.name}
+                              value={formData[field.name] || ''}
+                              onChange={handleInputChange}
+                              placeholder={field.placeholder}
+                              rows={3}
+                              className={`w-full px-4 py-2 rounded-lg border ${
+                                formErrors[field.name] ? 'border-rose-500' : 'border-stone-200'
+                              } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                            />
+                          ) : field.type === 'file' ? (
+                            <div className="relative">
+                              <input
+                                type="file"
+                                name={field.name}
+                                onChange={(e) => handleFileUpload(e, field.name)}
+                                
+                                title={field.label}
+                                className="block w-full text-sm text-stone-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-stone-100 file:text-stone-700 hover:file:bg-stone-200"
+                              />
+                              {files[field.name] && (
+                                <span className="text-sm text-stone-500 mt-1 block">
+                                  Selected: {files[field.name].name}
+                                </span>
+                              )}
+                            </div>
+                          ) : (
+                            <input
+                              type={field.type}
+                              name={field.name}
+                              value={formData[field.name] || ''}
+                              onChange={handleInputChange}
+                              placeholder={field.placeholder}
+                              className={`w-full px-4 py-2 rounded-lg border ${
+                                formErrors[field.name] ? 'border-rose-500' : 'border-stone-200'
+                              } focus:ring-2 focus:ring-amber-500 focus:border-transparent`}
+                            />
+                          )}
+
+                          {formErrors[field.name] && (
+                            <div className="flex items-center gap-2 mt-2 text-rose-600 text-sm">
+                              <AlertCircle className="w-4 h-4" />
+                              <span>{formErrors[field.name]}</span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+
+                <div className="pt-6">
+                  <button
+                    type="submit"
+                    className="w-full bg-amber-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-amber-600 transition-colors"
+                  >
+                    {admissionForm.submitText}
+                  </button>
+                </div>
+              </form>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
