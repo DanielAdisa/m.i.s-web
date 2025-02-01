@@ -1,0 +1,125 @@
+{
+    "about": {
+      "history": {
+        "title": "Our Heritage",
+        "content": [
+          {
+            "year": 1995,
+            "title": "Foundation Established",
+            "description": "Maranatha International Schools opened its first campus in Lagos with a focus on holistic education"
+          },
+          {
+            "year": 2005,
+            "title": "Global Recognition",
+            "description": "Received International Baccalaureate (IB) accreditation"
+          },
+          {
+            "year": 2014,
+            "title": "Campus Expansion",
+            "description": "Moved to our permanent 25-acre campus in Lekki"
+          },
+          {
+            "year": 2020,
+            "title": "Digital Transformation",
+            "description": "Implemented full e-learning infrastructure and hybrid education model"
+          },
+          {
+            "year": 2023,
+            "title": "Global Partnership",
+            "description": "Became a Cambridge International Examination Centre with NECO/WAEC certification"
+          }
+        ]
+      },
+      "mission": {
+        "statement": "To empower students to achieve their highest potential through innovative global education"
+      },
+      "vision": {
+        "statement": "To be Africa's premier institution for developing world-ready leaders"
+      },
+      "coreValues": {
+        "title": "M.A.R.A.N.A.T.H.A. Values",
+        "values": [
+          {"letter": "M", "title": "Moral Integrity", "description": "Upholding ethical principles in all actions"},
+          {"letter": "A", "title": "Academic Excellence", "description": "Pursuit of intellectual growth and innovation"},
+          {"letter": "R", "title": "Respect for Diversity", "description": "Embracing global citizenship and cultural understanding"},
+          {"letter": "A", "title": "Accountability", "description": "Taking responsibility for personal and community growth"},
+          {"letter": "N", "title": "Nurturing Potential", "description": "Developing individual talents and leadership qualities"},
+          {"letter": "A", "title": "Adaptive Learning", "description": "Fostering critical thinking and technological fluency"},
+          {"letter": "T", "title": "Team Collaboration", "description": "Promoting cooperative problem-solving skills"},
+          {"letter": "H", "title": "Holistic Development", "description": "Balancing academic rigor with character building"},
+          {"letter": "A", "title": "Advanced Innovation", "description": "Championing STEM and creative entrepreneurship"}
+        ]
+      },
+      "philosophy": {
+        "statement": "We believe in education that combines academic rigor with character development through personalized learning journeys and real-world applications"
+      },
+      "leadership": {
+        "title": "Governance Team",
+        "members": [
+          {
+            "name": "Mrs Chizoba Adisa",
+            "role": "Director General",
+            "credentials": ["PhD Educational Leadership", "25+ years experience"]
+          },
+          {
+            "name": "Prof. Daniel Adisa",
+            "role": "Academic Dean",
+            "credentials": ["MSc Curriculum Design", "IB Program Specialist"]
+          },
+          {
+            "name": "Pastor Glory Emmanuel",
+            "role": "Head of International Programs",
+            "credentials": ["Global Education Strategist", "Cambridge Certified"]
+          }
+        ]
+      },
+      "academicPrograms": {
+        "levels": [
+          {
+            "name": "Early Years",
+            "curriculum": "Montessori-inspired learning with EYFS framework",
+            "features": ["Bilingual Immersion", "Sensory Development"]
+          },
+          {
+            "name": "Primary School",
+            "curriculum": "IB PYP with Nigerian National Standards",
+            "features": ["STEAM Labs", "Leadership Development"]
+          },
+          {
+            "name": "Secondary School",
+            "curriculum": "Cambridge IGCSE & WAEC Combined Program",
+            "features": ["University Prep Track", "Global Exchange"]
+          },
+          {
+            "name": "High School",
+            "curriculum": "International Baccalaureate Diploma Programme",
+            "features": ["CAS Projects", "Research Thesis"]
+          }
+        ]
+      },
+      "accreditations": [
+        {
+          "body": "Council of International Schools",
+          "logo": "/cis-accreditation.png",
+          "since": 2010
+        },
+        {
+          "body": "Cambridge Assessment International Education",
+          "logo": "/cambridge-logo.png",
+          "since": 2015
+        }
+      ],
+      "testimonials": [
+        {
+          "author": "Chidinma Adebayo",
+          "role": "Alumna '22",
+          "text": "Maranatha's IB program gave me the perfect foundation for university studies abroad",
+          "image": "/alumni-chidinma.jpg"
+        }
+      ],
+      "careers": {
+        "contact": "careers@maranatha.edu.ng",
+        "process": "Submit CV and cover letter for review by our HR team"
+      }
+    }
+  }
