@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation';
 import { Menu, X, Search, Bell, User, BookOpen } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 
@@ -11,6 +12,7 @@ export function Navbar() {
   const [showNotifications, setShowNotifications] = useState(false)
   const [header, setHeader] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   const links = [
     { name: 'About', href: '/about', badge: null },
@@ -53,6 +55,10 @@ export function Navbar() {
     window.addEventListener('scroll', scrollHeader)
     return () => window.removeEventListener('scroll', scrollHeader)
   }, [isMobileMenuOpen])
+
+  const setIsOpen = (isOpen: boolean) => {
+    setIsMobileMenuOpen(isOpen);
+  }
 
   return (
     <motion.header
@@ -150,17 +156,18 @@ export function Navbar() {
 
             {/* Portal Button */}
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium shadow-lg transition-shadow ${
-                header 
-                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white'
-                  : 'bg-white text-indigo-600'
-              }`}
-            >
-              <User className="w-4 h-4" />
-              <span>Portal</span>
-            </motion.button>
+    onClick={() => router.push('/portal')}
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium shadow-lg transition-shadow ${
+      header 
+        ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white'
+        : 'bg-white text-indigo-600'
+    }`}
+  >
+    <User className="w-4 h-4" />
+    <span>Portal</span>
+  </motion.button>
           </div>
 
           {/* Mobile Toggle */}
@@ -238,11 +245,15 @@ export function Navbar() {
                 </button>
                 <motion.button
                   whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full bg-white text-indigo-600 rounded-full px-8 py-3 font-semibold shadow-lg"
-                >
-                  Open Student Portal
-                </motion.button>
+                  onClick={() => {
+                  setIsOpen(false); // Close mobile menu
+                   router.push('/portal'); // Navigate to portal
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                   className="w-full bg-white text-indigo-600 rounded-full px-8 py-3 font-semibold shadow-lg"
+                    >
+                       Open Student Portal
+                  </motion.button>
               </div>
             </div>
           </motion.div>
