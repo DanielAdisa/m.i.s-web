@@ -47,7 +47,7 @@ export function Footer() {
                 >
                   <Mail className="w-5 h-5 text-gold-400 flex-shrink-0" />
                   <a href="mailto:info@maranatha.edu" className="group-hover:text-gold-200 transition-colors">
-                    info@maranatha.edu
+                    maranatha.schools.aba@gmail.com
                   </a>
                 </MotionDiv>
               </ul>
